@@ -1,4 +1,7 @@
 <resources>
     <!-- Compose 화면용 테마. 실제 UI 테마는 Compose MaterialTheme이 담당한다. -->
     <style name="NativeTheme" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- ReactActivity는 AppCompatActivity를 상속하므로 AppCompat 테마가 필요하다. -->
+    <style name="ReactTheme" parent="Theme.AppCompat.DayNight.NoActionBar" />
 </resources>

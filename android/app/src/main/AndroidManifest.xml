@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- 디버그 빌드에서 Metro(개발 서버)와 통신하기 위해 필요 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- usesCleartextTraffic 값은 RN gradle plugin이 빌드 타입별로 주입한다 (debug=true, release=false) -->
     <application
         android:name=".MainApplication"
         android:allowBackup="false"
@@ -7,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/NativeTheme">
+        android:theme="@style/NativeTheme"
+        android:usesCleartextTraffic="${usesCleartextTraffic}">
 
         <activity
             android:name=".MainActivity"
@@ -17,5 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".rn.OrdersReactActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:exported="false"
+            android:theme="@style/ReactTheme"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 </manifest>
