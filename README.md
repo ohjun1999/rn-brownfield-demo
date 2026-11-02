@@ -167,6 +167,22 @@ JS 런타임(Hermes) 생성은 첫 RN 화면 진입 때로 미룹니다. 첫 진
 
 ---
 
+## 트러블슈팅
+
+이 프로젝트를 만들면서 실제로 겪은 문제들입니다.
+
+| 증상 | 원인 | 해결 |
+| --- | --- | --- |
+| 설치 시 `INSTALL_FAILED_NO_MATCHING_ABIS` | 32비트 x86 에뮬레이터인데 기본 ABI가 `x86_64,arm64-v8a` | `./gradlew :app:installDebug -PreactNativeArchitectures=x86` |
+| Gradle이 `local.properties` 에서 `Malformed \uxxxx encoding` 오류 | Windows 경로의 `\U...` 가 유니코드 이스케이프로 해석됨 | `sdk.dir=C\:/Users/<you>/AppData/Local/Android/Sdk` 처럼 `/` 사용 |
+| `npm run typecheck` 에서 `Cannot find type definition file for 'jest'` | `@react-native/typescript-config` 가 jest 타입을 기본 포함 | `tsconfig.json` 에 `"types": ["react-native"]` 지정 |
+| RN 화면 하단 버튼이 시스템 내비게이션 바에 가려짐 | `edgeToEdgeEnabled=true` 라 콘텐츠가 시스템 바 아래까지 그려짐 | 하단 여백 추가 (실서비스는 `react-native-safe-area-context` insets 권장) |
+| RN 화면이 빨간 화면 / `Unable to load script` | Metro 미실행 또는 기기에서 8081 포트 접근 불가 | `npm start` 실행 확인 후 `adb reverse tcp:8081 tcp:8081` |
+| 첫 빌드가 매우 오래 걸림 | 앱 레벨 TurboModule의 JNI 코드 빌드용 NDK 자동 설치 + C++ 컴파일 | 정상 동작. 이후 빌드는 캐시로 빨라짐 |
+| Git Bash에서 `adb shell screenrecord /sdcard/...` 경로가 깨짐 | MSYS가 `/sdcard` 를 Windows 경로로 변환 | 명령 앞에 `MSYS_NO_PATHCONV=1` (이때 `adb pull` 의 로컬 경로는 Windows 형식으로) |
+
+---
+
 ## 다음 단계로 해볼 만한 것
 
 - RN → 네이티브 결과 전달 (예: 주문 선택 시 `finish()` + `setResult`) 및 네이티브 → JS 이벤트
