@@ -1,5 +1,9 @@
 # RN Brownfield Demo
 
+<p align="center">
+  <img src="docs/demo.gif" width="360" alt="네이티브 홈 → RN 화면 이동 → 토스트 → 기기 정보 조회 데모" />
+</p>
+
 Kotlin + Jetpack Compose로 만든 **기존(네이티브) 안드로이드 앱**에 React Native 화면을 **브라운필드 방식**으로 붙인 예제입니다.
 
 - 네이티브 홈(Compose)에서 버튼 → RN 화면(TypeScript)으로 이동
