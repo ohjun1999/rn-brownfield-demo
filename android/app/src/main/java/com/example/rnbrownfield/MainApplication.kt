@@ -1,6 +1,7 @@
 package com.example.rnbrownfield
 
 import android.app.Application
+import com.example.rnbrownfield.rn.AppNativePackage
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
 import com.facebook.react.ReactHost
@@ -14,6 +15,8 @@ class MainApplication : Application(), ReactApplication {
         getDefaultReactHost(
             context = applicationContext,
             packageList = PackageList(this).packages.apply {
+                // autolinking 대상이 아닌 앱 내부 네이티브 모듈은 직접 등록한다.
+                add(AppNativePackage())
             },
         )
     }

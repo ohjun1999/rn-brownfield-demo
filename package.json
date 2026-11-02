@@ -23,6 +23,14 @@
     "@types/react": "^19.2.0",
     "typescript": "^6.0.3"
   },
+  "codegenConfig": {
+    "name": "AppSpecs",
+    "type": "modules",
+    "jsSrcsDir": "src/specs",
+    "android": {
+      "javaPackageName": "com.example.rnbrownfield.specs"
+    }
+  },
   "engines": {
     "node": ">= 22.11.0"
   }
