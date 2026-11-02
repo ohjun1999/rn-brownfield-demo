@@ -1,0 +1,4 @@
+<resources>
+    <!-- Compose 화면용 테마. 실제 UI 테마는 Compose MaterialTheme이 담당한다. -->
+    <style name="NativeTheme" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
