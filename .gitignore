@@ -1,0 +1,33 @@
+# ---- Node / React Native ----
+node_modules/
+npm-debug.log*
+yarn-error.log
+.metro-health-check*
+*.jsbundle
+
+# ---- Android / Gradle ----
+.gradle/
+build/
+.cxx/
+.kotlin/
+local.properties
+captures/
+*.apk
+*.aab
+*.hprof
+
+# 서명 키는 제외하되, RN 템플릿의 공용 debug.keystore 는 포함
+*.keystore
+*.jks
+!android/app/debug.keystore
+
+# ---- IDE / OS ----
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ---- Env ----
+.env
+.env.*
